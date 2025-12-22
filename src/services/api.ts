@@ -1,5 +1,7 @@
-import { Book, ReadingList, Review, Recommendation } from '@/types';
-import { mockBooks, mockReadingLists } from './mockData';
+import { Book, ReadingList, Recommendation, Review } from '@/types';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+
+console.log('API_BASE_URL:', API_BASE_URL);
 
 /**
  * ============================================================================
@@ -41,7 +43,6 @@ import { mockBooks, mockReadingLists } from './mockData';
  */
 
 // TODO: Uncomment this after deploying API Gateway (Week 2, Day 4)
-// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
 
 /**
  * TODO: Implement this function in Week 3, Day 4
@@ -89,10 +90,13 @@ import { mockBooks, mockReadingLists } from './mockData';
  * Expected response: Array of Book objects from DynamoDB
  */
 export async function getBooks(): Promise<Book[]> {
-  // TODO: Remove this mock implementation after deploying Lambda
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(mockBooks), 500);
-  });
+  const response = await fetch(`${API_BASE_URL}/books`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch books');
+  }
+
+  return response.json();
 }
 
 /**
@@ -113,13 +117,17 @@ export async function getBooks(): Promise<Book[]> {
  * Expected response: Single Book object or null if not found
  */
 export async function getBook(id: string): Promise<Book | null> {
-  // TODO: Remove this mock implementation after deploying Lambda
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const book = mockBooks.find((b) => b.id === id);
-      resolve(book || null);
-    }, 300);
-  });
+  const response = await fetch(`${API_BASE_URL}/books/${id}`);
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch book');
+  }
+
+  return response.json();
 }
 
 /**
@@ -157,23 +165,22 @@ export async function createBook(book: Omit<Book, 'id'>): Promise<Book> {
   });
 }
 
-/**
- * Update an existing book (admin only)
- * TODO: Replace with PUT /books/:id API call
- */
 export async function updateBook(id: string, book: Partial<Book>): Promise<Book> {
-  // Mock implementation
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const existingBook = mockBooks.find((b) => b.id === id);
-      const updatedBook: Book = {
-        ...existingBook!,
-        ...book,
-        id,
-      };
-      resolve(updatedBook);
-    }, 500);
+  const response = await fetch(`${API_BASE_URL}/books/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      // Week 3'te eklenecek:
+      // ...(await getAuthHeaders())
+    },
+    body: JSON.stringify(book),
   });
+
+  if (!response.ok) {
+    throw new Error('Failed to update book');
+  }
+
+  return response.json();
 }
 
 /**
@@ -261,11 +268,15 @@ export async function getRecommendations(): Promise<Recommendation[]> {
  *
  * Expected response: Array of ReadingList objects for the authenticated user
  */
+
 export async function getReadingLists(): Promise<ReadingList[]> {
-  // TODO: Remove this mock implementation after deploying Lambda
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(mockReadingLists), 500);
-  });
+  const response = await fetch(`${API_BASE_URL}/reading-lists?userId=1`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch reading lists');
+  }
+
+  return response.json();
 }
 
 /**

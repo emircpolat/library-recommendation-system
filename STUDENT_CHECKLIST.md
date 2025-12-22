@@ -18,33 +18,33 @@ Use this checklist to track your progress through the 4-week project.
 ### AWS Account Setup
 
 - [+] Create AWS account at https://aws.amazon.com
-- [ ] Set up billing alert for $10 USD
-- [ ] Create IAM user for development
-- [ ] Install AWS CLI (`aws --version`)
-- [ ] Configure AWS CLI (`aws configure`)
-- [ ] Verify AWS CLI works (`aws sts get-caller-identity`)
+- [+] Set up billing alert for $10 USD
+- [+] Create IAM user for development
+- [+] Install AWS CLI (`aws --version`)
+- [+] Configure AWS CLI (`aws configure`)
+- [+] Verify AWS CLI works (`aws sts get-caller-identity`)
 
 ### First Lambda Function
 
-- [ ] Create Lambda function: `hello-world-test`
-- [ ] Deploy and test Lambda in AWS Console
-- [ ] Create API Gateway REST API
-- [ ] Create `/hello` resource and GET method
-- [ ] Enable CORS on API Gateway
-- [ ] Deploy API to `dev` stage
-- [ ] Test with curl: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/hello`
-- [ ] See successful response with message and timestamp
+- [+] Create Lambda function: `hello-world-test`
+- [+] Deploy and test Lambda in AWS Console
+- [+] Create API Gateway REST API
+- [+] Create `/hello` resource and GET method
+- [+] Enable CORS on API Gateway
+- [+] Deploy API to `dev` stage
+- [+] Test with curl: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/hello`
+- [+] See successful response with message and timestamp
 
 ### Create GitHub Repository
 
-- [ ] Create public GitHub repository: `library-recommendation-system`
-- [ ] Initialize git in project: `git init`
-- [ ] Verify .gitignore exists (already provided in project)
-- [ ] Make initial commit: `git add . && git commit -m "Initial commit: Week 1 complete"`
-- [ ] Push to GitHub: `git remote add origin <your-repo-url> && git push -u origin main`
-- [ ] Add repository description: "AI-powered library book recommendation system (CENG413 Project)"
-- [ ] Add topics: `aws`, `react`, `typescript`, `serverless`, `student-project`
-- [ ] Commit your progress daily throughout the project
+- [+] Create public GitHub repository: `library-recommendation-system`
+- [+] Initialize git in project: `git init`
+- [+] Verify .gitignore exists (already provided in project)
+- [+] Make initial commit: `git add . && git commit -m "Initial commit: Week 1 complete"`
+- [+] Push to GitHub: `git remote add origin <your-repo-url> && git push -u origin main`
+- [+] Add repository description: "AI-powered library book recommendation system (CENG413 Project)"
+- [+] Add topics: `aws`, `react`, `typescript`, `serverless`, `student-project`
+- [+] Commit your progress daily throughout the project
 
 **✅ Week 1 Complete!** You have a working Lambda function and your project is on GitHub.
 
@@ -69,25 +69,25 @@ Use this checklist to track your progress through the 4-week project.
 
 ### Books API Lambda Functions
 
-- [ ] Create Lambda: `library-get-books`
-- [ ] Add DynamoDB read permissions to Lambda role
-- [ ] Deploy get-books code (see IMPLEMENTATION_GUIDE.md)
-- [ ] Test Lambda in AWS Console
-- [ ] Create API Gateway resource: `/books`
-- [ ] Create GET method, integrate with Lambda
-- [ ] Enable CORS
-- [ ] Deploy API
-- [ ] Test: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/books`
-- [ ] See array of books from DynamoDB
+- [+] Create Lambda: `library-get-books`
+- [+] Add DynamoDB read permissions to Lambda role
+- [+] Deploy get-books code (see IMPLEMENTATION_GUIDE.md)
+- [+] Test Lambda in AWS Console
+- [+] Create API Gateway resource: `/books`
+- [+] Create GET method, integrate with Lambda
+- [+] Enable CORS
+- [+] Deploy API
+- [+] Test: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/books`
+- [+] See array of books from DynamoDB
 
-- [ ] Create Lambda: `library-get-book`
-- [ ] Deploy get-book code
-- [ ] Create API Gateway resource: `/books/{id}`
-- [ ] Create GET method, integrate with Lambda
-- [ ] Enable CORS
-- [ ] Deploy API
-- [ ] Test: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/books/1`
-- [ ] See single book details
+- [+] Create Lambda: `library-get-book`
+- [+] Deploy get-book code
+- [+] Create API Gateway resource: `/books/{id}`
+- [+] Create GET method, integrate with Lambda
+- [+] Enable CORS
+- [+] Deploy API
+- [+] Test: `curl https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev/books/1`
+- [+] See single book details
 
 ### Reading Lists API Lambda Functions
 
