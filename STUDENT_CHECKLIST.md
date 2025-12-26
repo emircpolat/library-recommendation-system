@@ -172,25 +172,25 @@ Use this checklist to track your progress through the 4-week project.
 
 ### API Authorization
 
-- [ ] Go to API Gateway Console
-- [ ] Create Cognito Authorizer
-- [ ] Select your User Pool
-- [ ] Token source: `Authorization`
-- [ ] Test authorizer with a token
-- [ ] Add authorizer to POST /reading-lists
-- [ ] Add authorizer to PUT /reading-lists/{id}
-- [ ] Add authorizer to DELETE /reading-lists/{id}
-- [ ] Add authorizer to POST /recommendations
-- [ ] Deploy API to `dev` stage
+- [+] Go to API Gateway Console
+- [+] Create Cognito Authorizer
+- [+] Select your User Pool
+- [+] Token source: `Authorization`
+- [+] Test authorizer with a token
+- [+] Add authorizer to POST /reading-lists
+- [+] Add authorizer to PUT /reading-lists/{id}
+- [+] Add authorizer to DELETE /reading-lists/{id}
+- [+] Add authorizer to POST /recommendations
+- [+] Deploy API to `dev` stage
 
-- [ ] Update `src/services/api.ts`
-- [ ] Implement `getAuthHeaders()` function (see IMPLEMENTATION_GUIDE.md)
-- [ ] Update `createReadingList()` to use auth headers
-- [ ] Update `updateReadingList()` to use auth headers
-- [ ] Update `deleteReadingList()` to use auth headers
-- [ ] Test creating reading list while logged in
-- [ ] Test that API calls fail when logged out
-- [ ] Verify JWT token in browser Network tab
+- [+] Update `src/services/api.ts`
+- [+] Implement `getAuthHeaders()` function (see IMPLEMENTATION_GUIDE.md)
+- [+] Update `createReadingList()` to use auth headers
+- [+] Update `updateReadingList()` to use auth headers
+- [+] Update `deleteReadingList()` to use auth headers
+- [+] Test creating reading list while logged in
+- [+] Test that API calls fail when logged out
+- [+] Verify JWT token in browser Network tab
 
 **✅ Week 3 Complete!** You have full authentication with protected APIs.
 
