@@ -127,28 +127,22 @@ export async function deleteBook(): Promise<void> {
 /**
  * Get AI-powered book recommendations using Amazon Bedrock
  */
-export async function getRecommendations(): Promise<Recommendation[]> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const mockRecommendations: Recommendation[] = [
-        {
-          id: '1',
-          bookId: '1',
-          reason:
-            'Based on your interest in philosophical fiction, this book explores themes of choice and regret.',
-          confidence: 0.92,
-        },
-        {
-          id: '2',
-          bookId: '2',
-          reason:
-            'If you enjoy science-based thrillers, this space adventure combines humor with hard science.',
-          confidence: 0.88,
-        },
-      ];
-      resolve(mockRecommendations);
-    }, 1000);
+export async function getRecommendations(
+  query: string
+): Promise<{ recommendations: string }> {
+  const headers = await getAuthHeaders();
+
+  const response = await fetch(`${API_BASE_URL}/recommendations`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ query }),
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch recommendations");
+  }
+
+  return response.json();
 }
 
 /**

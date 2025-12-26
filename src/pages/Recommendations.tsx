@@ -13,6 +13,7 @@ export function Recommendations() {
   const [query, setQuery] = useState('');
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [recommendedBooks, setRecommendedBooks] = useState<Book[]>([]);
+  const [recommendationText, setRecommendationText] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
 
   const exampleQueries = [
@@ -29,16 +30,16 @@ export function Recommendations() {
     }
 
     setIsLoading(true);
+    setRecommendations([]);
+    setRecommendedBooks([]);
+    setRecommendationText('');
+
     try {
       // TODO: Replace with actual Bedrock API call
       // This will call Lambda function that uses Amazon Bedrock
       // to generate personalized recommendations based on the query
-      const recs = await getRecommendations();
-      setRecommendations(recs);
-
-      // Fetch full book details for each recommendation
-      const books = await Promise.all(recs.map((rec) => getBook(rec.bookId)));
-      setRecommendedBooks(books.filter((book): book is Book => book !== null));
+      const result = await getRecommendations(query);
+      setRecommendationText(result.recommendations);
     } catch (error) {
       handleApiError(error);
     } finally {
@@ -109,19 +110,6 @@ export function Recommendations() {
               disabled={isLoading}
               className="w-full"
             >
-              <svg
-                className="w-5 h-5 inline mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
               {isLoading ? 'Getting Recommendations...' : 'Get Recommendations'}
             </Button>
           </div>
@@ -133,60 +121,14 @@ export function Recommendations() {
           </div>
         )}
 
-        {!isLoading && recommendations.length > 0 && (
-          <div>
-            <h2 className="text-3xl font-bold mb-8">
-              <span className="gradient-text">Recommended for You</span>
+        {!isLoading && recommendationText && (
+          <div className="glass-effect rounded-2xl shadow-xl border border-white/20 p-8">
+            <h2 className="text-3xl font-bold mb-6">
+              <span className="gradient-text">AI Recommendation</span>
             </h2>
-
-            {/* Display recommendations with reasons */}
-            <div className="space-y-6 mb-12">
-              {recommendations.map((rec, index) => {
-                const book = recommendedBooks[index];
-                if (!book) return null;
-
-                return (
-                  <div
-                    key={rec.id}
-                    className="glass-effect rounded-2xl shadow-xl border border-white/20 p-6 hover-glow transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-6">
-                      <img
-                        src={book.coverImage}
-                        alt={book.title}
-                        className="w-28 h-40 object-cover rounded-xl shadow-lg"
-                        onError={(e) => {
-                          e.currentTarget.src = 'https://via.placeholder.com/112x160?text=No+Cover';
-                        }}
-                      />
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">{book.title}</h3>
-                        <p className="text-slate-600 mb-3 font-medium">by {book.author}</p>
-                        <p className="text-slate-700 mb-4 leading-relaxed">{rec.reason}</p>
-                        <div className="flex flex-wrap items-center gap-3">
-                          <div className="bg-gradient-to-r from-violet-100 to-indigo-100 px-3 py-1.5 rounded-xl border border-violet-200">
-                            <span className="text-sm text-violet-700 font-semibold">
-                              Confidence: {Math.round(rec.confidence * 100)}%
-                            </span>
-                          </div>
-                          <span className="badge-gradient px-3 py-1.5 text-sm">{book.genre}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <BookGrid books={recommendedBooks} />
-          </div>
-        )}
-
-        {!isLoading && recommendations.length === 0 && query && (
-          <div className="text-center py-12">
-            <p className="text-slate-700 text-lg">
-              No recommendations yet. Try describing what you're looking for!
-            </p>
+            <pre className="whitespace-pre-wrap text-slate-800 leading-relaxed text-lg">
+              {recommendationText}
+            </pre>
           </div>
         )}
       </div>
