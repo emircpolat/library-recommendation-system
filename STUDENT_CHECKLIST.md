@@ -173,24 +173,24 @@ Use this checklist to track your progress through the 4-week project.
 ### API Authorization
 
 - [+] Go to API Gateway Console
-- [+] Create Cognito Authorizer
-- [+] Select your User Pool
-- [+] Token source: `Authorization`
-- [+] Test authorizer with a token
-- [+] Add authorizer to POST /reading-lists
-- [+] Add authorizer to PUT /reading-lists/{id}
-- [+] Add authorizer to DELETE /reading-lists/{id}
-- [+] Add authorizer to POST /recommendations
-- [+] Deploy API to `dev` stage
+- [ ] Create Cognito Authorizer
+- [ ] Select your User Pool
+- [ ] Token source: `Authorization`
+- [ ] Test authorizer with a token
+- [ ] Add authorizer to POST /reading-lists
+- [ ] Add authorizer to PUT /reading-lists/{id}
+- [ ] Add authorizer to DELETE /reading-lists/{id}
+- [ ] Add authorizer to POST /recommendations
+- [ ] Deploy API to `dev` stage
 
-- [+] Update `src/services/api.ts`
-- [+] Implement `getAuthHeaders()` function (see IMPLEMENTATION_GUIDE.md)
-- [+] Update `createReadingList()` to use auth headers
-- [+] Update `updateReadingList()` to use auth headers
-- [+] Update `deleteReadingList()` to use auth headers
-- [+] Test creating reading list while logged in
-- [+] Test that API calls fail when logged out
-- [+] Verify JWT token in browser Network tab
+- [ ] Update `src/services/api.ts`
+- [ ] Implement `getAuthHeaders()` function (see IMPLEMENTATION_GUIDE.md)
+- [ ] Update `createReadingList()` to use auth headers
+- [ ] Update `updateReadingList()` to use auth headers
+- [ ] Update `deleteReadingList()` to use auth headers
+- [ ] Test creating reading list while logged in
+- [ ] Test that API calls fail when logged out
+- [ ] Verify JWT token in browser Network tab
 
 **✅ Week 3 Complete!** You have full authentication with protected APIs.
 
@@ -200,28 +200,28 @@ Use this checklist to track your progress through the 4-week project.
 
 ### AI Recommendations
 
-- [ ] Go to AWS Bedrock Console
-- [ ] Click "Model access"
-- [ ] Request access to Claude 3 Haiku
-- [ ] Wait for approval (usually instant)
-- [ ] Create Lambda: `library-get-recommendations`
-- [ ] Set timeout to 30 seconds
-- [ ] Add Bedrock permissions to Lambda role
-- [ ] Deploy recommendations code (see IMPLEMENTATION_GUIDE.md)
-- [ ] Test Lambda with sample query
-- [ ] Create API Gateway resource: `/recommendations`
-- [ ] Create POST method
-- [ ] Add Cognito authorizer
-- [ ] Enable CORS
-- [ ] Deploy API
+- [+] Go to AWS Bedrock Console
+- [+] Click "Model access"
+- [+] Request access to Claude 3 Haiku
+- [+] Wait for approval (usually instant)
+- [+] Create Lambda: `library-get-recommendations`
+- [+] Set timeout to 30 seconds
+- [+] Add Bedrock permissions to Lambda role
+- [+] Deploy recommendations code (see IMPLEMENTATION_GUIDE.md)
+- [+] Test Lambda with sample query
+- [+] Create API Gateway resource: `/recommendations`
+- [+] Create POST method
+- [+] Add Cognito authorizer
+- [+] Enable CORS
+- [+] Deploy API
 
-- [ ] Update `src/services/api.ts`
-- [ ] Update `getRecommendations()` function signature to accept query
-- [ ] Replace mock code with real API call
-- [ ] Update `src/pages/Recommendations.tsx` to pass query to API
-- [ ] Test recommendations page
-- [ ] Try different queries
-- [ ] Verify AI responses are relevant
+- [+] Update `src/services/api.ts`
+- [+] Update `getRecommendations()` function signature to accept query
+- [+] Replace mock code with real API call
+- [+] Update `src/pages/Recommendations.tsx` to pass query to API
+- [+] Test recommendations page
+- [+] Try different queries
+- [+] Verify AI responses are relevant
 
 ### Frontend Deployment with CI/CD
 
