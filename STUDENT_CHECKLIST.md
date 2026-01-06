@@ -227,53 +227,53 @@ Use this checklist to track your progress through the 4-week project.
 
 **Step 1: Create S3 Bucket and CloudFront**
 
-- [ ] Go to S3 Console
-- [ ] Create bucket: `library-app-frontend-[your-name]`
-- [ ] Uncheck "Block all public access"
-- [ ] Enable static website hosting
+- [+] Go to S3 Console
+- [+] Create bucket: `library-app-frontend-[your-name]`
+- [+] Uncheck "Block all public access"
+- [+] Enable static website hosting
   - Index document: `index.html`
   - Error document: `index.html`
-- [ ] Add bucket policy for public read access
-- [ ] Go to CloudFront Console
-- [ ] Create distribution
+- [+] Add bucket policy for public read access
+- [+] Go to CloudFront Console
+- [+] Create distribution
   - Origin: Your S3 bucket
   - Redirect HTTP to HTTPS
   - Default root object: `index.html`
-- [ ] Wait for CloudFront deployment (10-15 minutes)
-- [ ] Update CORS in API Gateway to allow CloudFront URL
+- [+] Wait for CloudFront deployment (10-15 minutes)
+- [+] Update CORS in API Gateway to allow CloudFront URL
 
 **Step 2: Set Up CI/CD Pipeline with CodePipeline**
 
-- [ ] Go to CodePipeline Console
-- [ ] Create new pipeline: `library-frontend-pipeline`
-- [ ] Configure source stage:
+- [+] Go to CodePipeline Console
+- [+] Create new pipeline: `library-frontend-pipeline`
+- [+] Configure source stage:
   - Source provider: GitHub (Version 2)
   - Connect to GitHub account
   - Select your repository: `library-recommendation-system`
   - Branch: `main`
   - Change detection: GitHub webhooks
-- [ ] Configure build stage:
+- [+] Configure build stage:
   - Build provider: AWS CodeBuild
   - Create new build project: `library-frontend-build`
   - Environment: Managed image, Ubuntu, Standard runtime, Latest image
   - Service role: Create new service role
-- [ ] Configure deploy stage:
+- [+] Configure deploy stage:
   - Deploy provider: Amazon S3
   - Bucket: Your S3 bucket name
   - Extract files before deploy: Yes
-- [ ] Review and create pipeline
+- [+] Review and create pipeline
 
 **Step 3: Create buildspec.yml**
 
-- [ ] Create `buildspec.yml` in project root with:
+- [+] Create `buildspec.yml` in project root with:
 
 ```yaml
+    commands:
 version: 0.2
 phases:
   install:
     runtime-versions:
       nodejs: 20
-    commands:
       - npm install
   build:
     commands:
@@ -284,19 +284,19 @@ artifacts:
   base-directory: dist
 ```
 
-- [ ] Commit and push buildspec.yml to GitHub
-- [ ] Watch pipeline execute automatically
-- [ ] Verify build succeeds
-- [ ] Verify deployment to S3
-- [ ] Test CloudFront URL - app should load
+- [4] Commit and push buildspec.yml to GitHub
+- [+] Watch pipeline execute automatically
+- [+] Verify build succeeds
+- [+] Verify deployment to S3
+- [+] Test CloudFront URL - app should load
 
 **Step 4: Test CI/CD**
 
-- [ ] Make a small change to frontend (e.g., update homepage text)
-- [ ] Commit and push to GitHub
-- [ ] Watch CodePipeline automatically trigger
-- [ ] Verify changes appear on CloudFront URL
-- [ ] CI/CD is working! 🎉
+- [+] Make a small change to frontend (e.g., update homepage text)
+- [+] Commit and push to GitHub
+- [+] Watch CodePipeline automatically trigger
+- [+] Verify changes appear on CloudFront URL
+- [+] CI/CD is working! 🎉
 
 ### Testing & Polish
 
