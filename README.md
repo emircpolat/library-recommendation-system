@@ -535,10 +535,10 @@ All API calls in `src/services/api.ts` are currently mocked. Students will imple
 After deploying your backend, update `.env`:
 
 ```env
-VITE_API_BASE_URL=https://YOUR-API-ID.execute-api.us-east-1.amazonaws.com/dev
+VITE_API_BASE_URL=https://0dd072y690.execute-api.us-east-1.amazonaws.com/dev
 VITE_AWS_REGION=us-east-1
-VITE_COGNITO_USER_POOL_ID=us-east-1_XXXXXX
-VITE_COGNITO_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXX
+VITE_COGNITO_USER_POOL_ID=us-east-1_s3YxKlP9w
+VITE_COGNITO_CLIENT_ID=32hjs6ie3b7fos666qcjf3mb4e
 ```
 
 ## 🧪 Testing
@@ -594,7 +594,7 @@ aws s3 sync dist/ s3://your-bucket-name/ --delete
 
 # Your site will be available at:
 # http://your-bucket-name.s3-website-us-east-1.amazonaws.com
-# or https://your-cloudfront-url.cloudfront.net
+# or https://dn41x5oawnzmp.cloudfront.net
 ```
 
 ### Cost Estimate:
