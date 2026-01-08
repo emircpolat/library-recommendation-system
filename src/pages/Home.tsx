@@ -23,7 +23,6 @@ export function Home() {
 
         <div className="container mx-auto text-center relative z-10">
            <div className="mb-6 text-3xl font-extrabold text-yellow-300">
-            🚀 CI/CD WORKS – DEPLOYED FROM MAIN 🚀
            </div>
           <div className="inline-block mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
             <span className="text-sm font-semibold text-white">✨ Powered by AI</span>
